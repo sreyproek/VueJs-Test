@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
       <button @click="showMessage">Click Me</button>
       <p v-if="messageVisible">{{ message }}</p>
@@ -36,4 +36,4 @@
     color: #333;
   }
   </style>
-  
+   -->
