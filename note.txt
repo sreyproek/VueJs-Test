@@ -1,0 +1,12 @@
+node_modules        # Installed dependencies
+composables         # Reusable logic functions (e.g., hooks)
+layout              # Layout components (header, footer)
+plugins             # Plugins (e.g., Vuetify setup)
+
+Run ESLint and Prettier:
+Run npm run lint to identify issues.
+Run npm run format to format your code automatically.
+
+
+
+
