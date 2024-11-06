@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="app" data-v=app>
     <Navbar />
     <router-view />
   </v-app>
@@ -16,5 +16,12 @@ export default {
 </script>
 
 <style scoped>
-
+#app {
+    max-width: auto;
+    margin: 30px auto;
+    font-weight: normal;
+    color: white;
+    border-radius: 20px;
+    background-color:rgb(15, 70, 114);
+}
 </style>

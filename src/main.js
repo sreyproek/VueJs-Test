@@ -8,6 +8,8 @@ import * as directives from 'vuetify/directives';
 import router from './router/router';
 import setupToast from './plugins/toast';
 import { formatDate } from '@/utils/dateUtils';
+import '@mdi/font/css/materialdesignicons.css'; 
+import '@fortawesome/fontawesome-free/css/all.css';
 
 const vuetify = createVuetify({
     components,
