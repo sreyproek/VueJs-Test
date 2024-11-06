@@ -18,7 +18,7 @@ export default {
 <style scoped>
 #app {
     max-width: auto;
-    margin: 30px auto;
+    margin: 50px auto;
     font-weight: normal;
     color: white;
     border-radius: 20px;
