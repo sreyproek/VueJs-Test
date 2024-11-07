@@ -10,3 +10,7 @@
     name: 'Leave Plan',
   };
   </script>
+
+<style scoped>
+
+</style>

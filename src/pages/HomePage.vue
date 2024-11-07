@@ -14,7 +14,12 @@ export default {
 </script>
 
 <style scoped>
-.v-toolbar-content{
-  height: 10px;
+#app {
+    max-width: auto;
+    margin: 100px auto;
+    font-weight: normal;
+    color: white;
+    border-radius: 20px;
+    background-color: var(--main);
 }
 </style>

@@ -10,3 +10,7 @@
     name: 'Configuration',
   };
   </script>
+
+<style scoped>
+
+</style>
