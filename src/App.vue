@@ -25,6 +25,6 @@ export default {
     font-weight: normal;
     color: white;
     border-radius: 20px;
-    background-color:rgb(15, 70, 114);
+    background-color: var(--main);
 }
 </style>

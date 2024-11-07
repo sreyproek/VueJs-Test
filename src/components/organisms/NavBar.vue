@@ -1,38 +1,50 @@
 <template>
   <v-app-bar color="var(--color-background)">
     <div
-      class="v-toolbar__content d-flex justify-space-between "
+      class="v-toolbar__content d-flex justify-space-between"
       style="height: auto"
     >
       <section class="d-flex align-center">
-        <v-col cols="auto">
-          <v-btn icon="mdi-dialpad" to="/"></v-btn>
-        </v-col>
-        <v-img :width="150" :aspect-ratio="1" cover :src="wingLogo"></v-img>
-        <h2 class="h2">|</h2>
-        <div class="h1-text-caption">
-          <svg-icon type="mdi" :path="path"></svg-icon>
+        <v-btn icon class="icon1">
+          <v-icon>mdi-dialpad</v-icon>
+        </v-btn>
+        
+        <v-btn to="/" variant="plain" class="logo-btn mx-1">
+          <v-img :src="wingLogo" height="35" width="260" cover></v-img>
+        </v-btn>
 
+        <h2 class="divider">|</h2>
+
+        <div class="title-section d-flex align-center ml-3">
+          <svg-icon class="icon mr-2" type="mdi" :path="path"></svg-icon>
           <h1 class="text-caption">Leave</h1>
         </div>
-        <v-btn icon="mdi-chevron-left"></v-btn>
-        <v-btn class="text-caption" to="/request" text>Request Change</v-btn>
-        <v-btn class="text-caption" to="/roster" text>Roster</v-btn>
-        <v-btn class="text-caption" to="/leave" text>Leave Plan</v-btn>
-        <v-btn class="text-caption" to="/configuration" text
+
+        <v-btn icon>
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+
+        <v-btn class="text-caption nav-btn" to="/request" text
+          >Request Change</v-btn
+        >
+        <v-btn class="text-caption nav-btn" to="/roster" text>Roster</v-btn>
+        <v-btn class="text-caption nav-btn" to="/leave" text>Leave Plan</v-btn>
+        <v-btn class="text-caption nav-btn" to="/configuration" text
           >Configuration</v-btn
         >
-        <v-btn icon="mdi-chevron-right"></v-btn>
+        <v-btn icon>
+          <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
       </section>
 
-      <section>
-        <v-btn icon size="30px">
+      <section class="d-flex align-center">
+        <v-btn icon>
           <v-badge color="error" content="2" overlap>
             <v-icon>mdi-bell</v-icon>
           </v-badge>
         </v-btn>
 
-        <v-avatar size="30px" color="teal">
+        <v-avatar size="36px" color="teal" class="ml-3">
           <span class="white--text headline">P</span>
         </v-avatar>
       </section>
@@ -62,25 +74,43 @@ export default {
 
 <style scoped>
 .v-toolbar__content {
-  height: 30px;
   color: rgb(250, 241, 241);
-  gap: 1px;
   background-color: var(--main);
+  padding: 0 20px;
+}
+
+.divider {
+  font-size:smaller;
+  color: rgb(92, 86, 86);
+}
+
+.title-section {
+  color:var(--highlight-color);
+  font-weight: bold;
+}
+
+.icon {
+  color:var(--highlight-color);
 }
 .v-badge {
-  margin-top: 7px;
+  margin-top: 2px;
 }
-.v-avatar {
-  margin: 0 10px;
-}
-.h1-text-caption {
-  color: rgb(77, 182, 16);
-  display: flex;
-  justify-content: space-between;
-  margin: 0 20px;
-}
-.h2{
-  color: rgb(92, 86, 86);
 
+.v-avatar {
+  margin: 10px;
+}
+.icon1 {
+  margin: 0 15px;
+}
+
+.mx-1 {
+  height: 40px;
+  width: 150px;
+}
+
+.nav-btn {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 3px;
 }
 </style>
