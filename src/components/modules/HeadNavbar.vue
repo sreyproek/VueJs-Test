@@ -1,25 +1,42 @@
+
 <template>
   <v-app-bar color="var(--color-background)">
     <div
       class="v-toolbar__content d-flex justify-space-between"
-      style="height: 45px; margin-bottom: 20px"
+      style="height: 60px; margin-bottom: 20px"
     >
       <v-spacer></v-spacer>
 
-      <h2 class="divider">|</h2>
-      <v-pagination v-model="page" :length="5" class="my-4"></v-pagination>
-      <v-btn class="btn-create">create</v-btn>
-      <h2 class="divider">|</h2>
-      <v-btn class="text-caption"
-        >10 <svg-icon type="mdi" :path="path"></svg-icon
-      ></v-btn>
+      <v-divider vertical></v-divider>
+
+      <v-pagination
+        v-model="page"
+        :length="totalPages"
+        show-first-last-page
+        class="pagination-all-controls"
+      >
+        <span class="page-number">{{ page }}</span>
+      </v-pagination>
+
+      <v-data-table
+        :search="search"
+        :items="items"
+        :items-per-page="itemsPerPage"
+        v-model:items-per-page="itemsPerPage"
+        class="data-table"
+      >
+
+      </v-data-table>
+
+      <v-divider vertical></v-divider>
+
+      <v-btn class="btn-create">Create</v-btn>
     </div>
   </v-app-bar>
 </template>
 
 <script>
 import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiMenuDown } from '@mdi/js'
 
 export default {
   name: 'my-component',
@@ -29,7 +46,14 @@ export default {
   data() {
     return {
       page: 1,
-      path: mdiMenuDown,
+      search: '',
+      items: [], 
+      itemsPerPage: 5,
+      pagination: {
+        page: 1,
+        itemsPerPage: 5,
+      },
+      totalPages: 10, 
     }
   },
 }
@@ -37,25 +61,41 @@ export default {
 
 <style scoped>
 .v-toolbar__content {
-  height: 30px;
+  height: 60px;
   color: rgb(250, 241, 241);
-  gap: 1px;
+  gap: 10px; 
   background-color: var(--main);
 }
+
+.v-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-number {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
 .btn-create {
   font-size: 13px;
   font-weight: bold;
   margin: 0 5px;
+  color: black;
   background-color: var(--highlight-color);
 }
-.text-caption {
-  font-size: 13px;
-  font-weight: bold;
-  margin: 0 5px;
-  background-color: var(--highlight-color);
+
+.data-table {
+  width: 100%;
+  margin: 0;
+  background-color: var(--main);
 }
-.divider {
-  font-size: smaller;
-  color: rgb(92, 86, 86);
+
+.v-divider {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 </style>
