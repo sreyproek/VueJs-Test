@@ -1,4 +1,3 @@
-
 <template>
   <v-app-bar color="var(--color-background)">
     <div
@@ -15,18 +14,9 @@
         show-first-last-page
         class="pagination-all-controls"
       >
-        <span class="page-number">{{ page }}</span>
       </v-pagination>
 
-      <v-data-table
-        :search="search"
-        :items="items"
-        :items-per-page="itemsPerPage"
-        v-model:items-per-page="itemsPerPage"
-        class="data-table"
-      >
-
-      </v-data-table>
+      <v-data-table class="data-table"></v-data-table>
 
       <v-divider vertical></v-divider>
 
@@ -47,13 +37,13 @@ export default {
     return {
       page: 1,
       search: '',
-      items: [], 
+      items: [],
       itemsPerPage: 5,
       pagination: {
         page: 1,
         itemsPerPage: 5,
       },
-      totalPages: 10, 
+      totalPages: 5,
     }
   },
 }
@@ -63,7 +53,7 @@ export default {
 .v-toolbar__content {
   height: 60px;
   color: rgb(250, 241, 241);
-  gap: 10px; 
+  gap: 10px;
   background-color: var(--main);
 }
 
@@ -72,7 +62,10 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
+.pagination-all-controls {
+  color: white;
+  margin-top: 15px;
+}
 .page-number {
   font-size: 13px;
   font-weight: bold;
@@ -81,16 +74,16 @@ export default {
 }
 
 .btn-create {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
-  margin: 0 5px;
+  margin-top: 10px;
+  padding: 5px 10px;
   color: black;
   background-color: var(--highlight-color);
 }
-
 .data-table {
-  width: 100%;
-  margin: 0;
+  width: 200px;
+  height: 50px;
   background-color: var(--main);
 }
 
