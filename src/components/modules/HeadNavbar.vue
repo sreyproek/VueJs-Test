@@ -40,7 +40,7 @@
         <v-btn class="btn-save">Save</v-btn>
         <v-btn class="btn-back" @click="discardChanges">
           Discard
-        </v-btn>  
+        </v-btn>
       </div>
     </v-app-bar>
   </div>

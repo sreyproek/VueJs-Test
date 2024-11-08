@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import HeadNavbar from './components/templates/CreatRequest.vue';
+import HeadNavbar from './components/modules/HeadNavbar.vue';
 import Navbar from './components/organisms/NavBar.vue';
 
 export default {
@@ -24,7 +24,7 @@ export default {
     margin: 100px auto;
     font-weight: normal;
     color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: var(--main);
 }
 </style>
