@@ -1,40 +1,42 @@
 <template>
   <v-app-bar color="var(--color-background)">
-    <div
-      class="v-toolbar__content d-flex justify-space-between"
-      style="height: auto"
-    >
+    <div class="v-toolbar__content d-flex justify-space-between" style="height: auto">
       <section class="d-flex align-center">
         <v-btn icon class="icon1">
           <v-icon>mdi-dialpad</v-icon>
         </v-btn>
-        
+
         <v-btn to="/" variant="plain" class="logo-btn mx-1">
           <v-img :src="wingLogo" height="35" width="260" cover></v-img>
         </v-btn>
 
-        <h2 class="divider">|</h2>
+        <v-divider vertical></v-divider>
 
         <div class="title-section d-flex align-center ml-3">
           <svg-icon class="icon mr-2" type="mdi" :path="path"></svg-icon>
           <h1 class="text-caption">Leave</h1>
         </div>
 
-        <v-btn icon>
-          <v-icon>mdi-chevron-left</v-icon>
-        </v-btn>
-
-        <v-btn class="text-caption nav-btn" to="/request" text
-          >Request Change</v-btn
-        >
-        <v-btn class="text-caption nav-btn" to="/roster" text>Roster</v-btn>
-        <v-btn class="text-caption nav-btn" to="/leave" text>Leave Plan</v-btn>
-        <v-btn class="text-caption nav-btn" to="/configuration" text
-          >Configuration</v-btn
-        >
-        <v-btn icon>
-          <v-icon>mdi-chevron-right</v-icon>
-        </v-btn>
+        <v-sheet class="mx-auto" max-width="450">
+          <v-slide-group show-arrows>
+            <v-slide-group-item 
+              v-for="(item, index) in items"
+              :key="index"
+              v-slot="{ isSelected, toggle }"
+            >
+              <v-btn
+                :color="isSelected ? 'grey-darken-3' : undefined"
+                class="ma-2 text-white text-caption custom-btn"
+                rounded
+                @click="toggle"
+                :to="item.route"
+                text
+              >
+                {{ item.label }}
+              </v-btn>
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
       </section>
 
       <section class="d-flex align-center">
@@ -59,7 +61,6 @@ import { mdiExitRun } from '@mdi/js'
 
 export default {
   name: 'NavBar',
-  name: 'my-cool-component',
   components: {
     SvgIcon,
   },
@@ -67,6 +68,12 @@ export default {
     return {
       wingLogo,
       path: mdiExitRun,
+      items: [
+        { label: 'Request Change', route: '/request' },
+        { label: 'Roster', route: '/roster' },
+        { label: 'Leave Plan', route: '/leave' },
+        { label: 'Configuration', route: '/configuration' },
+      ],
     }
   },
 }
@@ -80,17 +87,17 @@ export default {
 }
 
 .divider {
-  font-size:smaller;
+  font-size: smaller;
   color: rgb(92, 86, 86);
 }
 
 .title-section {
-  color:var(--highlight-color);
+  color: var(--highlight-color);
   font-weight: bold;
 }
 
 .icon {
-  color:var(--highlight-color);
+  color: var(--highlight-color);
 }
 .v-badge {
   margin-top: 2px;
@@ -113,4 +120,23 @@ export default {
   font-weight: bold;
   margin: 0 3px;
 }
+.v-sheet{
+  margin: 0 10px;
+  background-color:  var(--main);
+}
+.mx-auto{
+  padding:  10px;
+  color: white;
+}
+.custom-btn {
+  font-size: 14px; 
+  padding: 0 20px; 
+  box-shadow:  var(--highlight-color);  
+  transition: background-color 0.3s ease;  
+}
+
+.custom-btn:hover {
+  background-color:  var(--highlight-color); 
+}
+
 </style>
