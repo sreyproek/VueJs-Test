@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import HeadNavbar from './components/modules/HeadNavbar.vue';
+import HeadNavbar from './components/templates/CreatRequest.vue';
 import Navbar from './components/organisms/NavBar.vue';
 
 export default {

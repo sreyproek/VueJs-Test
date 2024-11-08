@@ -1,3 +1,4 @@
+
 <template>
   <v-app-bar color="var(--color-background)">
     <div class="v-toolbar__content d-flex justify-space-between" style="height: auto">
@@ -22,15 +23,14 @@
             <v-slide-group-item 
               v-for="(item, index) in items"
               :key="index"
-              v-slot="{ isSelected, toggle }"
             >
               <v-btn
-                :color="isSelected ? 'grey-darken-3' : undefined"
+                :color="isActiveRoute(item.route) ? activeColor : inactiveColor"
                 class="ma-2 text-white text-caption custom-btn"
                 rounded
-                @click="toggle"
                 :to="item.route"
                 text
+                @click="toggleColor"
               >
                 {{ item.label }}
               </v-btn>
@@ -68,12 +68,23 @@ export default {
     return {
       wingLogo,
       path: mdiExitRun,
+      activeColor: 'grey-darken-3',  
+      inactiveColor: 'green-darken-1', 
       items: [
         { label: 'Request Change', route: '/request' },
         { label: 'Roster', route: '/roster' },
         { label: 'Leave Plan', route: '/leave' },
         { label: 'Configuration', route: '/configuration' },
       ],
+    }
+  },
+  methods: {
+    isActiveRoute(route) {
+      return this.$route.path === route;
+    },
+    toggleColor() {
+      this.activeColor = this.activeColor === 'grey-darken-3' ? 'green' : 'grey-darken-3';
+      this.inactiveColor = this.inactiveColor === 'green-darken-1' ? 'blue' : 'green-darken-1';
     }
   },
 }
@@ -99,6 +110,7 @@ export default {
 .icon {
   color: var(--highlight-color);
 }
+
 .v-badge {
   margin-top: 2px;
 }
@@ -106,6 +118,7 @@ export default {
 .v-avatar {
   margin: 10px;
 }
+
 .icon1 {
   margin: 0 15px;
 }
@@ -120,23 +133,25 @@ export default {
   font-weight: bold;
   margin: 0 3px;
 }
-.v-sheet{
+
+.v-sheet {
   margin: 0 10px;
-  background-color:  var(--main);
+  background-color: var(--main);
 }
-.mx-auto{
-  padding:  10px;
+
+.mx-auto {
+  padding: 10px;
   color: white;
 }
+
 .custom-btn {
-  font-size: 14px; 
-  padding: 0 20px; 
-  box-shadow:  var(--highlight-color);  
-  transition: background-color 0.3s ease;  
+  font-size: 14px;
+  padding: 0 20px;
+  box-shadow: var(--highlight-color);
+  transition: background-color 0.3s ease;
 }
 
 .custom-btn:hover {
-  background-color:  var(--highlight-color); 
+  background-color: var(--highlight-color);
 }
-
 </style>

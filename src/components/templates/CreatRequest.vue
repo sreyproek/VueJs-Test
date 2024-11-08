@@ -14,32 +14,33 @@
           v-model="page"
           :length="totalPages"
           show-first-last-page
-          class="pagination-all-controls"
+          class="pagination-controls"
         ></v-pagination>
 
         <v-data-table class="data-table"></v-data-table>
 
         <v-divider vertical></v-divider>
 
-        <v-btn @click="showLeaveRequest = true" class="btn-create"
-          >Create</v-btn
-        >
+        <v-btn @click="showNewPage" class="btn-create">
+          Create
+        </v-btn>
       </div>
     </v-app-bar>
 
     <v-app-bar height="50" color="var(--main)" v-if="showLeaveRequest">
       <div
-        class="v-toolbar__content d-flex justify-space-between "
+        class="v-toolbar__content d-flex justify-space-between"
         style="height: 60px; margin-bottom: 10px"
       >
         <span class="text-h6">Leave Request</span>
 
         <v-spacer></v-spacer>
-        
-          <v-btn class="btn-submit">Submit</v-btn>
-          <v-btn class="btn-save">Save</v-btn>
-          <v-btn class="btn-back" @click="showLeaveRequest = false">Discard</v-btn
-          >
+
+        <v-btn class="btn-submit">Submit</v-btn>
+        <v-btn class="btn-save">Save</v-btn>
+        <v-btn class="btn-back" @click="discardChanges">
+          Discard
+        </v-btn>  
       </div>
     </v-app-bar>
   </div>
@@ -47,20 +48,21 @@
 
 <script>
 export default {
-  name: 'my-component',
+  name: 'MyComponent',
   data() {
     return {
       page: 1,
-      search: '',
-      items: [],
-      itemsPerPage: 5,
-      pagination: {
-        page: 1,
-        itemsPerPage: 5,
-      },
       totalPages: 5,
-      showLeaveRequest: false,
+      showLeaveRequest: false, 
     }
+  },
+  methods: {
+    showNewPage() {
+      this.showLeaveRequest = true;
+    },
+    discardChanges() {
+      this.showLeaveRequest = false;
+    },
   },
 }
 </script>
@@ -78,7 +80,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.pagination-all-controls {
+.pagination-controls {
   color: white;
   margin-top: 15px;
 }
@@ -109,8 +111,10 @@ export default {
 }
 
 .text-h6 {
-  margin: 30px 20px;
+  margin-left: 20px;
+  font-weight: bold;
 }
+
 .btn-back {
   color: red;
   background-color: rgb(246, 194, 194);
